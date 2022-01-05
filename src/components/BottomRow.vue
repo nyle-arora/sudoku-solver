@@ -22,12 +22,12 @@ export default {
     },
     data() {
         return {
-            rowArray: [null, null, null, null, null, null, null, null, null],
+            rowArray: [0, 0, 0, 0, 0, 0, 0, 0, 0],
         }
     }, 
     methods: {
         setRowArray(index, char) {
-            this.rowArray[index] = char;
+            this.rowArray[index] = parseInt(char);
             this.$emit('rowUpdated', this.rowArray);
         }
     }
