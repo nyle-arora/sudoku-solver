@@ -1,14 +1,14 @@
 <template>
   <v-card elevation="2">
-    <FirstRow></FirstRow>
-    <Row></Row>
-    <Row></Row>
-    <FirstRow></FirstRow>
-    <Row></Row>
-    <Row></Row>
-    <FirstRow></FirstRow>
-    <Row></Row>
-    <BottomRow></BottomRow>
+    <FirstRow @rowUpdated="setGridArray(0, $event)"></FirstRow>
+    <Row @rowUpdated="setGridArray(1, $event)"></Row>
+    <Row @rowUpdated="setGridArray(2, $event)"></Row>
+    <FirstRow @rowUpdated="setGridArray(3, $event)"></FirstRow>
+    <Row @rowUpdated="setGridArray(4, $event)"></Row>
+    <Row @rowUpdated="setGridArray(5, $event)"></Row>
+    <FirstRow @rowUpdated="setGridArray(6, $event)"></FirstRow>
+    <Row @rowUpdated="setGridArray(7, $event)"></Row>
+    <BottomRow @rowUpdated="setGridArray(8, $event)"></BottomRow>
   </v-card>  
 </template>
 
@@ -26,8 +26,14 @@ export default {
     }, 
     data() {
         return {
-            
+            gridArray: [[], [], [], [], [], [], [], [], []],
         }
+    }, 
+    methods: {
+      setGridArray(index, row) {
+        this.gridArray[index] = row.slice();
+        console.log(this.gridArray);
+      }
     }
 }
 

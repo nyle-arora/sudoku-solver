@@ -1,19 +1,12 @@
 <template>
     <div>
-        <!-- <v-text-field
-        maxlength="1"
-        outlined
-        color='blue'
-        type='number'
-        hide-spin-buttons
-        >
-        </v-text-field> -->
         <input
         class="inputSquare"
         inputmode="numeric"
         type="number"
         min="1"
         max="9"
+        @input="emitter"
         />
     </div>
 </template>
@@ -27,8 +20,14 @@ export default {
             rules: {
                 counter: value => value.length <= 1 || 'Max 1 character',
             },
+            char: '',
         }
     },
+    methods: {
+        emitter(e) {
+            this.$emit('charEntered', e.target.value);
+        }
+    }
 }
 
 </script>
