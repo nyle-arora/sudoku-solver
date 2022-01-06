@@ -40,7 +40,7 @@ export default {
     methods: {
       setGridArray(index, row) {
         this.gridArray[index] = row.slice();
-        console.log(this.gridArray);
+        this.$emit('gridUpdated', this.gridArray);
       }
     }
 }
