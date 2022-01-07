@@ -1,5 +1,5 @@
 <template>
-  <v-card elevation="2">
+  <div>
     <FirstRow @rowUpdated="setGridArray(0, $event)"></FirstRow>
     <Row @rowUpdated="setGridArray(1, $event)"></Row>
     <Row @rowUpdated="setGridArray(2, $event)"></Row>
@@ -9,7 +9,7 @@
     <FirstRow @rowUpdated="setGridArray(6, $event)"></FirstRow>
     <Row @rowUpdated="setGridArray(7, $event)"></Row>
     <BottomRow @rowUpdated="setGridArray(8, $event)"></BottomRow>
-  </v-card>  
+  </div> 
 </template>
 
 <script>
