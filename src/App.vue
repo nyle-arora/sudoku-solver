@@ -16,7 +16,7 @@
             :loading="loader"
             :disabled="loader"
             color="info"
-            @click="solvePuzzle"
+            @click="solveAlgoActivated"
           >
             Solve puzzle
             <template v-slot:loader>
@@ -31,6 +31,7 @@
 
 <script>
 import Puzzle from './components/Puzzle.vue';
+import { solvePuzzle } from './Solver';
 
 export default {
   name: 'App',
@@ -53,12 +54,21 @@ export default {
   methods: {
     setGridArray(grid) {
       this.gridArray = grid;
-      console.log(this.gridArray);
     }, 
-    solvePuzzle() {
+    solveAlgoActivated() {
       this.loader = true;
       console.log('ready to solve');
+      let soln = solvePuzzle(this.gridArray);
+      if (soln.solvable) {
+        this.gridArray = soln.arr;
+      } else {
+        this.noSoln();
+      }
+      console.log(this.gridArray);
       setTimeout(() => (this.loader = false), 10000)
+    },
+    noSoln() {
+      console.log('there is no solution');
     }
   }
 };
