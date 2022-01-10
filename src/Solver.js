@@ -65,7 +65,7 @@ function boxLegal(num, rowIndex, colIndex, gridArray) {
     let leftCornerCol = colIndex - colIndex % 3;
 
     for (let i = leftCornerRow; i < leftCornerRow + 3; i++) {
-        for (let j = leftCornerCol; j < leftCornerCol + 3; i++) {
+        for (let j = leftCornerCol; j < leftCornerCol + 3; j++) {
             if (gridArray[i][j] == num) {
                 return false;
             }
