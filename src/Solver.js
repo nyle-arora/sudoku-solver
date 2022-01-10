@@ -25,7 +25,7 @@ function solvePuzzle(gridArray) {
         let isLegal = rowLegal(i, rowIndex, gridArray) && colLegal(i, colIndex, gridArray) && boxLegal((i, rowIndex, colIndex, gridArray));
         if(isLegal){
             gridArray[rowIndex][colIndex] = i;
-            if (solvePuzzle(gridArray)) {
+            if (solvePuzzle(gridArray).solvable) {
                 return {
                     solvable: true,
                     arr: gridArray,
