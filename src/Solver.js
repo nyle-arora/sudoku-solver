@@ -26,7 +26,10 @@ function solvePuzzle(gridArray) {
         if(isLegal){
             gridArray[rowIndex][colIndex] = i;
             if (solvePuzzle(gridArray)) {
-                return true;
+                return {
+                    solvable: true,
+                    arr: gridArray,
+                };
             } else {
                 gridArray[rowIndex][colIndex] = 0;
             }
