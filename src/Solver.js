@@ -22,7 +22,7 @@ function solvePuzzle(gridArray) {
         };
     }
     for (let i = 1; i < 10; i++) {
-        let isLegal = rowLegal(i, rowIndex, gridArray) && colLegal(i, colIndex, gridArray) && boxLegal((i, rowIndex, colIndex, gridArray));
+        let isLegal = rowLegal(i, rowIndex, gridArray) && colLegal(i, colIndex, gridArray) && boxLegal(i, rowIndex, colIndex, gridArray);
         if(isLegal){
             gridArray[rowIndex][colIndex] = i;
             if (solvePuzzle(gridArray).solvable) {
