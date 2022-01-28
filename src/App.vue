@@ -3,7 +3,7 @@
     <v-main>
       <div class="maindiv">
         <div class="puzzle">
-          <Puzzle @gridUpdated="setGridArray"></Puzzle>
+          <Puzzle @gridUpdated="setGridArray" :solvedGridArray="solvedGridArray"></Puzzle>
         </div>
         <div class="sidebar">
           <h1>Vue Sudoku Solver</h1>
@@ -49,6 +49,15 @@ export default {
                 [0, 0, 0, 0, 0, 0, 0, 0, 0], 
                 [0, 0, 0, 0, 0, 0, 0, 0, 0]],
     loader: false,
+    solvedGridArray: [[0, 0, 0, 0, 0, 0, 0, 0, 0], 
+                [0, 0, 0, 0, 0, 0, 0, 0, 0], 
+                [0, 0, 0, 0, 0, 0, 0, 0, 0], 
+                [0, 0, 0, 0, 0, 0, 0, 0, 0], 
+                [0, 0, 0, 0, 0, 0, 0, 0, 0], 
+                [0, 0, 0, 0, 0, 0, 0, 0, 0],
+                [0, 0, 0, 0, 0, 0, 0, 0, 0], 
+                [0, 0, 0, 0, 0, 0, 0, 0, 0], 
+                [0, 0, 0, 0, 0, 0, 0, 0, 0]],
     
   }),
   methods: {
@@ -60,16 +69,16 @@ export default {
       console.log('ready to solve');
       let soln = solvePuzzle(this.gridArray);
       if (soln.solvable) {
-        this.gridArray = soln.arr;
+        this.solvedGridArray = soln.arr;
       } else {
         this.noSoln();
       }
-      console.log(this.gridArray);
-      setTimeout(() => (this.loader = false), 10000)
+      console.log(this.solvedGridArray);
+      this.loader = false;
     },
     noSoln() {
       console.log('there is no solution');
-    }
+    },
   }
 };
 </script>

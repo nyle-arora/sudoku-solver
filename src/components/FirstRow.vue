@@ -1,14 +1,14 @@
 <template>
     <div class="row">
-        <Square class="topRow firstCol" @charEntered="setRowArray(0, $event)"></Square>
-        <Square class="topRow" @charEntered="setRowArray(1, $event)"></Square>
-        <Square class="topRow thirdCol" @charEntered="setRowArray(2, $event)"></Square>
-        <Square class="topRow" @charEntered="setRowArray(3, $event)"></Square>
-        <Square class="topRow" @charEntered="setRowArray(4, $event)"></Square>
-        <Square class="topRow thirdCol" @charEntered="setRowArray(5, $event)"></Square>
-        <Square class="topRow" @charEntered="setRowArray(6, $event)"></Square>
-        <Square class="topRow" @charEntered="setRowArray(7, $event)"></Square>
-        <Square class="topRow thirdCol" @charEntered="setRowArray(8, $event)"></Square>
+        <Square class="topRow firstCol" @charEntered="setRowArray(0, $event)" :solvedSquare="solvedRow[0]"></Square>
+        <Square class="topRow" @charEntered="setRowArray(1, $event)" :solvedSquare="solvedRow[1]"></Square>
+        <Square class="topRow thirdCol" @charEntered="setRowArray(2, $event)" :solvedSquare="solvedRow[2]"></Square>
+        <Square class="topRow" @charEntered="setRowArray(3, $event)" :solvedSquare="solvedRow[3]"></Square>
+        <Square class="topRow" @charEntered="setRowArray(4, $event)" :solvedSquare="solvedRow[4]"></Square>
+        <Square class="topRow thirdCol" @charEntered="setRowArray(5, $event)" :solvedSquare="solvedRow[5]"></Square>
+        <Square class="topRow" @charEntered="setRowArray(6, $event)" :solvedSquare="solvedRow[6]"></Square>
+        <Square class="topRow" @charEntered="setRowArray(7, $event)" :solvedSquare="solvedRow[7]"></Square>
+        <Square class="topRow thirdCol" @charEntered="setRowArray(8, $event)" :solvedSquare="solvedRow[8]"></Square>
     </div>
 </template>
 
@@ -20,6 +20,7 @@ export default {
     components: {
         Square,
     },
+    props: ['solvedRow'],
     data() {
         return {
             rowArray: [0, 0, 0, 0, 0, 0, 0, 0, 0],

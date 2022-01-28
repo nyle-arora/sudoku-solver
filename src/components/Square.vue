@@ -23,6 +23,13 @@ export default {
             char: '',
         }
     },
+    props: ['solvedSquare'],
+    watch: {
+        'solvedSquare': function(newVal, oldVal) {
+            console.log('Prop changed: ', newVal, ' | was: ', oldVal);
+            document.querySelector('input').value = newVal;
+        }
+    },
     methods: {
         emitter(e) {
             this.$emit('charEntered', e.target.value);

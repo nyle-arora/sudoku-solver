@@ -1,14 +1,14 @@
 <template>
   <div>
-    <FirstRow @rowUpdated="setGridArray(0, $event)"></FirstRow>
-    <Row @rowUpdated="setGridArray(1, $event)"></Row>
-    <Row @rowUpdated="setGridArray(2, $event)"></Row>
-    <FirstRow @rowUpdated="setGridArray(3, $event)"></FirstRow>
-    <Row @rowUpdated="setGridArray(4, $event)"></Row>
-    <Row @rowUpdated="setGridArray(5, $event)"></Row>
-    <FirstRow @rowUpdated="setGridArray(6, $event)"></FirstRow>
-    <Row @rowUpdated="setGridArray(7, $event)"></Row>
-    <BottomRow @rowUpdated="setGridArray(8, $event)"></BottomRow>
+    <FirstRow @rowUpdated="setGridArray(0, $event)" :solvedRow="solvedGridArray[0]"></FirstRow>
+    <Row @rowUpdated="setGridArray(1, $event)" :solvedRow="solvedGridArray[1]"></Row>
+    <Row @rowUpdated="setGridArray(2, $event)" :solvedRow="solvedGridArray[2]"></Row>
+    <FirstRow @rowUpdated="setGridArray(3, $event)" :solvedRow="solvedGridArray[3]"></FirstRow>
+    <Row @rowUpdated="setGridArray(4, $event)" :solvedRow="solvedGridArray[4]"></Row>
+    <Row @rowUpdated="setGridArray(5, $event)" :solvedRow="solvedGridArray[5]"></Row>
+    <FirstRow @rowUpdated="setGridArray(6, $event)" :solvedRow="solvedGridArray[6]"></FirstRow>
+    <Row @rowUpdated="setGridArray(7, $event)" :solvedRow="solvedGridArray[7]"></Row>
+    <BottomRow @rowUpdated="setGridArray(8, $event)" :solvedRow="solvedGridArray[8]"></BottomRow>
   </div> 
 </template>
 
@@ -24,6 +24,7 @@ export default {
         FirstRow,
         BottomRow,
     }, 
+    props: ['solvedGridArray'],
     data() {
         return {
             gridArray: [[0, 0, 0, 0, 0, 0, 0, 0, 0], 
