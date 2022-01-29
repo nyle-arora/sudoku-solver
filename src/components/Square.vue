@@ -3,6 +3,7 @@
         <input
         class="inputSquare"
         inputmode="numeric"
+        ref="inputSquare"
         type="number"
         min="1"
         max="9"
@@ -27,7 +28,8 @@ export default {
     watch: {
         'solvedSquare': function(newVal, oldVal) {
             console.log('Prop changed: ', newVal, ' | was: ', oldVal);
-            document.querySelector('input').value = newVal;
+            this.$refs.inputSquare.value = newVal;
+            // document.querySelector('input').value = newVal;
         }
     },
     methods: {
