@@ -1,3 +1,15 @@
+function preSolveLegalCheck(gridArray) {
+    for (let i = 0; i < 9; i++) {
+        for (let j = 0; j < 9; j++) {
+            let isLegal = rowLegal(gridArray[i][j], i, gridArray) && colLegal(gridArray[i][j], j, gridArray) && boxLegal(gridArray[i][j], i, j, gridArray);
+            if (isLegal == false) {
+                return false;
+            }
+        }
+    }
+    return true;
+}
+
 function solvePuzzle(gridArray) {
     let rowIndex = -1; 
     let colIndex = -1;
@@ -75,4 +87,4 @@ function boxLegal(num, rowIndex, colIndex, gridArray) {
 
 }
 
-export { solvePuzzle }
+export { solvePuzzle, preSolveLegalCheck }
