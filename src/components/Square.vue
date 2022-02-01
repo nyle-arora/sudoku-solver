@@ -4,7 +4,7 @@
         class="inputSquare"
         inputmode="numeric"
         ref="inputSquare"
-        type="number"
+        type="text"
         min="1"
         max="9"
         @input="emitter"
@@ -18,9 +18,6 @@ export default {
     name: 'Square',
     data() {
         return {
-            rules: {
-                counter: value => value.length <= 1 || 'Max 1 character',
-            },
             char: '',
         }
     },
@@ -28,14 +25,14 @@ export default {
     watch: {
         'solvedSquare': function(newVal, oldVal) {
             console.log('Prop changed: ', newVal, ' | was: ', oldVal);
-            this.$refs.inputSquare.value = newVal;
+            this.$refs.inputSquare.value = String(newVal);
             this.$refs.inputSquare.style.color = 'blue';
             // document.querySelector('input').value = newVal;
         }
     },
     methods: {
         emitter(e) {
-            this.$emit('charEntered', e.target.value);
+            this.$emit('charEntered', Number(e.target.value));
         }
     }
 }

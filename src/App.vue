@@ -23,6 +23,22 @@
               <span>Loading...</span>
             </template>
           </v-btn>
+          <v-snackbar
+            v-model="snackbar"
+            :multi-line="multiLine"
+          >
+            There is no solution to this sudoku :(
+            <template v-slot:action="{ attrs }">
+              <v-btn
+                color="red"
+                text
+                v-bind="attrs"
+                @click="snackbar = false"
+              >
+                Close
+              </v-btn>
+            </template>
+          </v-snackbar>
         </div>
       </div>
     </v-main>
@@ -49,6 +65,8 @@ export default {
                 [0, 0, 0, 0, 0, 0, 0, 0, 0], 
                 [0, 0, 0, 0, 0, 0, 0, 0, 0]],
     loader: false,
+    snackbar: false,
+    multiLine: true,
     solvedGridArray: [[0, 0, 0, 0, 0, 0, 0, 0, 0], 
                 [0, 0, 0, 0, 0, 0, 0, 0, 0], 
                 [0, 0, 0, 0, 0, 0, 0, 0, 0], 
@@ -58,7 +76,6 @@ export default {
                 [0, 0, 0, 0, 0, 0, 0, 0, 0], 
                 [0, 0, 0, 0, 0, 0, 0, 0, 0], 
                 [0, 0, 0, 0, 0, 0, 0, 0, 0]],
-    
   }),
   methods: {
     setGridArray(grid) {
@@ -68,17 +85,20 @@ export default {
       this.loader = true;
       console.log('ready to solve');
       let soln = solvePuzzle(this.gridArray);
+      console.log('made it');
       if (soln.solvable) {
         this.solvedGridArray = soln.arr;
       } else {
+        console.log('in here');
         this.noSoln();
       }
-      console.log(this.solvedGridArray);
       this.loader = false;
+      this.clearable = true;
     },
     noSoln() {
       console.log('there is no solution');
-    },
+      this.snackbar = true;
+    }
   }
 };
 </script>
