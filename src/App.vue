@@ -83,31 +83,19 @@ export default {
     }, 
     solveAlgoActivated() {
       this.loader = true;
-      console.log('ready to solve');
-      // let soln = solvePuzzle(this.gridArray);
-      // console.log('made it');
-      // if (soln.solvable) {
-      //   this.solvedGridArray = soln.arr;
-      // } else {
-      //   console.log('in here');
-      //   this.noSoln();
-      // }
       if (preSolveLegalCheck(this.gridArray) == false){
         this.noSoln();
       } else {
         let soln = solvePuzzle(this.gridArray);
-        console.log('made it');
         if (soln.solvable) {
           this.solvedGridArray = soln.arr;
         } else {
-          console.log('in here');
           this.noSoln();
         }
       }
       this.loader = false;
     },
     noSoln() {
-      console.log('there is no solution');
       this.snackbar = true;
     }
   }
