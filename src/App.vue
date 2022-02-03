@@ -47,7 +47,7 @@
 
 <script>
 import Puzzle from './components/Puzzle.vue';
-import { solvePuzzle, /*preSolveLegalCheck*/ } from './Solver';
+import { solvePuzzle, preSolveLegalCheck } from './Solver';
 
 export default {
   name: 'App',
@@ -84,26 +84,26 @@ export default {
     solveAlgoActivated() {
       this.loader = true;
       console.log('ready to solve');
-      let soln = solvePuzzle(this.gridArray);
-      console.log('made it');
-      if (soln.solvable) {
-        this.solvedGridArray = soln.arr;
-      } else {
-        console.log('in here');
-        this.noSoln();
-      }
-      // if (preSolveLegalCheck(this.gridArray) == false){
-      //   this.noSoln();
+      // let soln = solvePuzzle(this.gridArray);
+      // console.log('made it');
+      // if (soln.solvable) {
+      //   this.solvedGridArray = soln.arr;
       // } else {
-      //   let soln = solvePuzzle(this.gridArray);
-      //   console.log('made it');
-      //   if (soln.solvable) {
-      //     this.solvedGridArray = soln.arr;
-      //   } else {
-      //     console.log('in here');
-      //     this.noSoln();
-      //   }
+      //   console.log('in here');
+      //   this.noSoln();
       // }
+      if (preSolveLegalCheck(this.gridArray) == false){
+        this.noSoln();
+      } else {
+        let soln = solvePuzzle(this.gridArray);
+        console.log('made it');
+        if (soln.solvable) {
+          this.solvedGridArray = soln.arr;
+        } else {
+          console.log('in here');
+          this.noSoln();
+        }
+      }
       this.loader = false;
     },
     noSoln() {
