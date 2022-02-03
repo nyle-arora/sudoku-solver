@@ -27,7 +27,6 @@ export default {
             console.log('Prop changed: ', newVal, ' | was: ', oldVal);
             this.$refs.inputSquare.value = newVal;
             this.$refs.inputSquare.style.color = 'blue';
-            // document.querySelector('input').value = newVal;
         }
     },
     methods: {

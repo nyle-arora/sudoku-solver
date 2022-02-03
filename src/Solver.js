@@ -1,7 +1,6 @@
 function preSolveLegalCheck(gridArray) {
     for (let i = 0; i < 9; i++) {
         for (let j = 0; j < 9; j++) {
-            console.log(gridArray[i][j]);
             let isLegal = preSolveRowCheck(gridArray[i][j], i, j, gridArray) && preSolveColCheck(gridArray[i][j], i, j, gridArray) && preSolveBoxCheck(gridArray[i][j], i, j, gridArray);
             if (isLegal == false) {
                 return false;
@@ -87,7 +86,6 @@ function solvePuzzle(gridArray) {
 }
 
 function rowLegal(num, rowIndex, gridArray) {
-    console.log('num is', num);
     for(let i = 0; i < 9; i++) {
         if (gridArray[rowIndex][i] == num && num != 0) {
             return false;
