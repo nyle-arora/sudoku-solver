@@ -2,9 +2,8 @@
     <div>
         <input
         class="inputSquare"
-        inputmode="numeric"
         ref="inputSquare"
-        type="number"
+        type="text"
         min="1"
         max="9"
         @input="emitter"

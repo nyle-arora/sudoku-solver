@@ -23,6 +23,19 @@
               <span>Loading...</span>
             </template>
           </v-btn>
+          <v-btn
+            id="clearbtn"
+            class="ma-2"
+            :loading="loader1"
+            :disabled="loader1"
+            color="info"
+            @click="clearPuzzle"
+          >
+            Clear puzzle
+            <template v-slot:loader>
+              <span>Loading...</span>
+            </template>
+          </v-btn>
           <v-snackbar
             v-model="snackbar"
             :multi-line="multiLine"
@@ -65,6 +78,7 @@ export default {
                 [0, 0, 0, 0, 0, 0, 0, 0, 0], 
                 [0, 0, 0, 0, 0, 0, 0, 0, 0]],
     loader: false,
+    loader1: false,
     snackbar: false,
     multiLine: true,
     solvedGridArray: [[0, 0, 0, 0, 0, 0, 0, 0, 0], 
@@ -97,6 +111,19 @@ export default {
     },
     noSoln() {
       this.snackbar = true;
+    },
+    clearPuzzle() {
+      this.loader1 = true; 
+      this.solvedGridArray = [['', '', '', '', '', '', '', '', ''], 
+                ['', '', '', '', '', '', '', '', ''], 
+                ['', '', '', '', '', '', '', '', ''], 
+                ['', '', '', '', '', '', '', '', ''], 
+                ['', '', '', '', '', '', '', '', ''], 
+                ['', '', '', '', '', '', '', '', ''],
+                ['', '', '', '', '', '', '', '', ''], 
+                ['', '', '', '', '', '', '', '', ''], 
+                ['', '', '', '', '', '', '', '', '']];
+      this.loader1 = false;
     }
   }
 };
