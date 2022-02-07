@@ -24,6 +24,9 @@ export default {
     watch: {
         'solvedSquare': function(newVal, oldVal) {
             console.log('Prop changed: ', newVal, ' | was: ', oldVal);
+            if (newVal == '') {
+                this.$refs.inputSquare.style.color = 'black';
+            }
             this.$refs.inputSquare.value = newVal;
             this.$refs.inputSquare.style.color = 'blue';
         }
