@@ -24,6 +24,7 @@
             </template>
           </v-btn>
           <v-btn
+            v-if="solved"
             id="clearbtn"
             class="ma-2"
             :loading="loader1"
@@ -78,6 +79,7 @@ export default {
                 [0, 0, 0, 0, 0, 0, 0, 0, 0], 
                 [0, 0, 0, 0, 0, 0, 0, 0, 0]],
     loader: false,
+    solved: false,
     loader1: false,
     snackbar: false,
     multiLine: true,
@@ -103,6 +105,7 @@ export default {
         let soln = solvePuzzle(this.gridArray);
         if (soln.solvable) {
           this.solvedGridArray = soln.arr;
+          this.solved = true;
         } else {
           this.noSoln();
         }
@@ -124,6 +127,7 @@ export default {
                 ['', '', '', '', '', '', '', '', ''], 
                 ['', '', '', '', '', '', '', '', '']];
       this.loader1 = false;
+      this.solved = false;
     }
   }
 };
